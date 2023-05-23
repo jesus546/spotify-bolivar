@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap');
+
+@layer base {
+  body {
+    font-family: 'Poppins', sans-serif;
+    @apply bg-white scrollbar-hide;
+  }
+}
+
+@layer components {
+  .sidebarIcon {
+    @apply h-6 text-[#808080] cursor-pointer;
+  }
+
+
+
+
+  .icon {
+    @apply hover:scale-125 transition-all duration-150 ease-out;
+  }
+
+  .croppedIcon {
+    clip-path: inset(0 50% 0 0);
+  }
+
+  .playerIcon {
+    @apply transition ease-out transform hover:scale-105 hover:text-white;
+  }
+}
+
+.slick-next:before, .slick-prev:before {
+  color: #008c44;
+  border-radius: 100%;
+}
+
