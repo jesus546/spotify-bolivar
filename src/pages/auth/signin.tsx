@@ -24,7 +24,7 @@ const Signin: React.FC<{ providers: any }> = ({ providers }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {providers && Object.values(providers).map((provider: any) => (
+      { Object.values(providers).map((provider: any) => (
         <div className="text-center" key={provider.name}>
           <picture>
 
