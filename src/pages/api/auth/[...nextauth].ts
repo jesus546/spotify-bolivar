@@ -89,5 +89,5 @@ export default NextAuth({
       return session;
     },
   },
-  secret: process.env.SECRET || ''
+  secret: '26a94972a5defa9a67a5bcd29772adc1',
 });
