@@ -6,7 +6,7 @@ const nextConfig = {
     SPOTIFY_CLIENT_SECRET: "5d835ada86454973a7a2da1c686cb89d",
     NEXTAUTH_URL: "http://localhost:3000",
     NEXTAUTH_SECRET: "+pSvs5EwqOTeCm3ENlSW/TEfIP3MwK5kJD0okAvTx5M=",
-    NEXT_PUBLIC_SECRET: "+pSvs5EwqOTeCm3ENlSW/TEfIP3MwK5kJD0okAvTx5M="
+    SECRET: "26a94972a5defa9a67a5bcd29772adc1"
   }
 }
 
