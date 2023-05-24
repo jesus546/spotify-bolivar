@@ -15,6 +15,7 @@ async function refreshAccessToken(token: any) {
         client_secret: process.env.SPOTIFY_CLIENT_SECRET || '',
         grant_type: "refresh_token",
         refresh_token: token.refreshToken,
+        
       });
 
     const response = await fetch(url, {
@@ -22,6 +23,7 @@ async function refreshAccessToken(token: any) {
         "Content-Type": "application/x-www-form-urlencoded",
       },
       method: "POST",
+      
     });
 
     const refreshedTokens = await response.json();
@@ -35,6 +37,7 @@ async function refreshAccessToken(token: any) {
       accessToken: refreshedTokens.access_token,
       accessTokenExpires: Date.now() + refreshedTokens.expires_in * 1000,
       refreshToken: refreshedTokens.refresh_token ?? token.refreshToken,
+    
     };
   } catch (error) {
     console.log(error);
@@ -51,12 +54,13 @@ export default NextAuth({
     SpotifyProvider({
       clientId: process.env.SPOTIFY_CLIENT_ID || '',
       clientSecret: process.env.SPOTIFY_CLIENT_SECRET || '',
-
       authorization:
         "https://accounts.spotify.com/authorize?scope=user-read-email,playlist-read-private,user-read-email,streaming,user-read-private,user-library-read,user-library-modify,user-read-playback-state,user-modify-playback-state,user-read-recently-played,user-follow-read",
     }),
   ],
-
+  pages: {
+    signIn: '/auth/signin'
+  },
   callbacks: {
     async jwt({ token, user, account }: any) {
       // Initial sign in
