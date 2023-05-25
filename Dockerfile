@@ -50,7 +50,9 @@ COPY --from=builder /app/package.json ./package.json
 COPY --from=builder /app/src ./src
 COPY --from=builder /app/tsconfig.json ./tsconfig.json
 COPY --from=builder /app/next-env.d.ts ./next-env.d.ts
-
+COPY --from=builder /app/tailwind.config.js ./tailwind.config.js
+COPY --from=builder /app/.env.development ./.env.development
+COPY --from=builder /app/postcss.config.js ./postcss.config.js
 USER nextjs
 
 EXPOSE 3000
