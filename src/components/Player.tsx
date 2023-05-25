@@ -1,24 +1,28 @@
 import { useEffect } from "react";
 import SpotifyPlayer from "react-spotify-web-playback";
 import { useDispatch, useSelector } from "react-redux";
-import { setPlayState, setPlayingTrack, setRefreshFavorites, usePlayState } from "@/store/pages";
+import {
+  setPlayState,
+  setRefreshFavorites,
+  usePlayState,
+} from "@/store/pages";
 
-
-const Player: React.FC<{ accessToken: any, trackUri: any }> = ({ accessToken, trackUri }) => {
-  const dispatch = useDispatch()
-  const play = useSelector(usePlayState)
-
+const Player: React.FC<{ accessToken: any; trackUri: any }> = ({
+  accessToken,
+  trackUri,
+}) => {
+  const dispatch = useDispatch();
+  const play = useSelector(usePlayState);
 
   useEffect(() => {
     if (trackUri) {
-      dispatch(setPlayState(true))
+      dispatch(setPlayState(true));
     }
   }, [trackUri, dispatch]);
 
   if (!accessToken) return null;
 
   return (
-
     <SpotifyPlayer
       styles={{
         activeColor: "#f8db66",
@@ -38,20 +42,19 @@ const Player: React.FC<{ accessToken: any, trackUri: any }> = ({ accessToken, tr
       showSaveIcon
       callback={(state) => {
         console.log(state);
-        
-        if (state.type === 'favorite_update') {
-          dispatch(setRefreshFavorites(true))
+
+        if (state.type === "favorite_update") {
+          dispatch(setRefreshFavorites(true));
         }
-       
-        dispatch(setPlayState(state.isPlaying))
+
+        dispatch(setPlayState(state.isPlaying));
       }}
       play={play}
       uris={trackUri ? [trackUri] : []}
       magnifySliderOnHover={true}
       autoPlay={true}
     />
-
   );
-}
+};
 
 export default Player;

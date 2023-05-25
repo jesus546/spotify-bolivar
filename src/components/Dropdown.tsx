@@ -25,9 +25,10 @@ export default function Dropdown() {
             <Menu.Item>
               {({ active }) => (
                 <button
-                  className={`${active && "bg-white/10"
-                    } group flex rounded-md items-center w-full px-2 cursor-pointer py-2 text-sm font-semibold tracking-wide text-white `}
-                  onClick={() => signOut({redirect: false})}
+                  className={`${
+                    active && "bg-white/10"
+                  } group flex rounded-md items-center w-full px-2 cursor-pointer py-2 text-sm font-semibold tracking-wide text-white `}
+                  onClick={() => signOut({ redirect: false })}
                 >
                   Cerrar sessión
                 </button>

@@ -63,7 +63,7 @@ export default NextAuth({
   },
   callbacks: {
     async jwt({ token, user, account }: any) {
-      // Initial sign in
+      //Inicio de sesión inicial
       if (account && user) {
         return {
           accessToken: account.access_token,
@@ -72,13 +72,13 @@ export default NextAuth({
           user,
         };
       }
-      // Return previous token if the access token has not expired yet
+      // Devuelve el token anterior si el token de acceso aún no ha caducado
       if (Date.now() < token.accessTokenExpires) {
         return token;
       }
 
 
-      // Access token has expired, try to update it
+      // El token de acceso ha caducado, intenta actualizarlo
       return refreshAccessToken(token);
     },
     async session({ session, token }: any) {
